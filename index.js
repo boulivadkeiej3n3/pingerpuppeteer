@@ -5,11 +5,6 @@ const ServersDB = Mongoose.model(`servers`, new Mongoose.Schema({url:String}));
 const asyncTimeout = async(duration)=>{await new Promise((resolve)=>{setTimeout(resolve,duration)}) }
 let ServersToPing = [];
 /*************************************************/
-Mongoose.connect(`mongodb+srv://maximous:123MONGODB.com@m001.cmsqx.mongodb.net/?retryWrites=true&w=majority`).then((connection)=>{
-connection ? console.log(`Database Connected!`): console.log(`Error Occured during connection to database`);
-})
-
-
 async function main(){
  
    ServersToPing = await ServersDB.find({url:{$regex:/.+/}});
@@ -27,6 +22,14 @@ async function main(){
         }
            await asyncTimeout(30000)
     }
-}main();
+}
+
+
+Mongoose.connect(`mongodb+srv://maximous:123MONGODB.com@m001.cmsqx.mongodb.net/?retryWrites=true&w=majority`).then((connection)=>{
+connection ? console.log(`Database Connected!`): console.log(`Error Occured during connection to database`);
+main();
+})
+
+
 
 
