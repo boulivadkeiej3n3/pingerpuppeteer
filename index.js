@@ -13,7 +13,7 @@ res.end("hello world")
 async function main(){
  
    ServersToPing = await ServersDB.find({url:{$regex:/.+/}});
-  ServersToPing.slice((process.argv.slice(2))[0],(process.argv.slice(2))[1])
+   ServersToPing = ServersToPing.slice(process.env.INDEX,process.env.INDEX +10)
   //Looping forever and ping all list of servers every 2 minutes:
     while(true){
         for(const ServerURL of ServersToPing)
