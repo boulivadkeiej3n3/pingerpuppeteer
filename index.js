@@ -1,10 +1,15 @@
 const Mongoose  = require("mongoose");
 const Axios      = require("axios");
 const randomUserAgent = require("random-useragent");
+const HTTP       = require("http");
 const ServersDB = Mongoose.model(`servers`, new Mongoose.Schema({url:String}));
 const asyncTimeout = async(duration)=>{await new Promise((resolve)=>{setTimeout(resolve,duration)}) }
 let ServersToPing = [];
 /*************************************************/
+
+HTTP.createServer((req,res)=>{
+res.end("hello world")
+}).listen(8080,"0.0.0.0")
 async function main(){
  
    ServersToPing = await ServersDB.find({url:{$regex:/.+/}});
