@@ -9,7 +9,7 @@
   "main": "build/index.js",
   "dependencies": {
     "chrome-launcher": "^0.10.2",  
-    "puppeteer": "^1.7.0",
+    "puppeteer": "^1.7.0"
   }
   
 }
