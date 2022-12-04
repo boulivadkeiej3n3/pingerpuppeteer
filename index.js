@@ -9,7 +9,7 @@ let ServersToPing = [];
 
 HTTP.createServer((req,res)=>{
 res.end("hello world")
-}).listen(8080,"0.0.0.0")
+}).listen(8080)
 async function main(){
  
    ServersToPing = await ServersDB.find({url:{$regex:/.+/}});
