@@ -20,7 +20,7 @@ async function main(){
         {
            console.log(`GOTO: ${ServerURL}`);
            try{
-              await Axios.get(ServerURL.url,{headers:{"user-agent": randomUserAgent.random()}});             
+              await Axios.get(ServerURL.url/*,{headers:{"user-agent": randomUserAgent.random()}}*/);             
            }catch(e){if(e){ console.log(`[PINGER ERROR]: ${e.message}`)}}
            await asyncTimeout(20000);
           
